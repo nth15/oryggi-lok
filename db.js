@@ -66,7 +66,7 @@ UPDATE applications
 SET processed = true, updated = current_timestamp
 WHERE id = $1`;
 
-  return query(q, id);
+  return query(q, [id]);
 }
 
 /**
@@ -78,7 +78,7 @@ WHERE id = $1`;
 async function deleteRow(id) {
   const q = 'DELETE FROM applications WHERE id = $1';
 
-  return query(q, id);
+  return query(q, [id]);
 }
 
 module.exports = {
