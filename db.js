@@ -34,11 +34,11 @@ async function query(q, values = []) {
  */
 async function insert(data) {
   const q = `
-INSERT INTO applications
-(name, email, phone, text, job)
+INSERT INTO users
+(name, email, phone, text)
 VALUES
-($1, $2, $3, $4, $5)`;
-  const values = [data.name, data.email, data.phone, data.text, data.job];
+($1, $2, $3, $4)`;
+  const values = [data.name, data.email, data.phone, data.text];
 
   return query(q, values);
 }
@@ -49,34 +49,27 @@ VALUES
  * @returns {array} Fylki af öllum umsóknum
  */
 async function select() {
-  const result = await query('SELECT * FROM applications ORDER BY id');
+  const result = await query('SELECT * FROM users ORDER BY id');
+
+  return result.rows;
+}
+
+
+async function search(username) {
+  const q = 'SELECT * FROM users WHERE name = $1';
+
+  const result = await query(q, [username]);
 
   return result.rows;
 }
 
 /**
- * Uppfærir umsókn sem unna.
+ * Deletes user.
  *
  * @param {string} id Id á umsókn
- * @returns {object} Hlut með niðurstöðu af því að keyra fyrirspurn
- */
-async function update(id) {
-  const q = `
-UPDATE applications
-SET processed = true, updated = current_timestamp
-WHERE id = $1`;
-
-  return query(q, [id]);
-}
-
-/**
- * Eyðir umsókn.
- *
- * @param {string} id Id á umsókn
- * @returns {object} Hlut með niðurstöðu af því að keyra fyrirspurn
  */
 async function deleteRow(id) {
-  const q = 'DELETE FROM applications WHERE id = $1';
+  const q = 'DELETE FROM users WHERE id = $1';
 
   return query(q, [id]);
 }
@@ -84,6 +77,6 @@ async function deleteRow(id) {
 module.exports = {
   insert,
   select,
-  update,
-  deleteRow, // delete er frátekið orð
+  search,
+  deleteRow,
 };

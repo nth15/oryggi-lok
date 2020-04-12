@@ -4,8 +4,8 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 
-const apply = require('./apply');
-const applications = require('./applications');
+const signup = require('./signup');
+const users = require('./users');
 
 const app = express();
 
@@ -29,16 +29,16 @@ function isInvalid(field, errors) {
 
 app.locals.isInvalid = isInvalid;
 
-app.use('/', apply);
-app.use('/applications', applications);
+app.use('/', signup);
+app.use('/users', users);
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
-  res.status(404).render('error', { title: '404', error: '404 fannst ekki' });
+  res.status(404).render('error', { title: '404', error: '404 not found' });
 }
 
 function errorHandler(error, req, res, next) { // eslint-disable-line
   console.error(error);
-  res.status(500).render('error', { title: 'Villa', error });
+  res.status(500).render('error', { title: 'Error', error });
 }
 
 app.use(notFoundHandler);

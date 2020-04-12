@@ -5,6 +5,7 @@ const util = require('util');
 
 const { Client } = require('pg');
 
+// Database url string
 const connectionString = process.env.DATABASE_URL;
 
 const readFileAsync = util.promisify(fs.readFile);
@@ -29,7 +30,7 @@ async function query(q) {
 async function main() {
   console.info(`Set upp gagnagrunn á ${connectionString}`);
   // droppa töflu ef til
-  await query('DROP TABLE IF EXISTS applications');
+  await query('DROP TABLE IF EXISTS users');
   console.info('Töflu eytt');
 
   // búa til töflu út frá skema

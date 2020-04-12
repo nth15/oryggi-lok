@@ -105,21 +105,21 @@ button:hover {
   margin-bottom: 2rem;
 }
 
-.application {
+.user {
   max-width: 60rem;
   margin-bottom: 3rem;
 }
 
-.application h2 {
+.user h2 {
   margin-bottom: 0;
 }
 
-.application .text {
+.user .text {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.application .actions {
+.user .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;

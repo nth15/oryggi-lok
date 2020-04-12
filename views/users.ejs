@@ -1,0 +1,21 @@
+<%- include('header') -%>
+
+<h1>Members</h1>
+
+<div class="users">
+  <% if (list.length === 0) { %>
+    <p>No users</p>
+  <% } %>
+
+  <% list.forEach((user) => { %>
+    <div class="user">
+      <h2><%= user.name %></h2>
+      <p><a href="mailto:<%= user.email %>"><%= user.email %></a></p>
+      <p>Sími: <%= user.phone %></p>
+      <p>Umsókn send: <%= user.created.toISOString() %></p>
+      <p class="text"><%= user.text %></p>
+    </div>
+  <% }); %>
+</div>
+
+<%- include('footer') -%>

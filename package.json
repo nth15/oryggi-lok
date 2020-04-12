@@ -1,7 +1,7 @@
 {
-  "name": "v2-synilausn",
-  "version": "1.0.0",
-  "description": "Sýnilausn á verkefni 2",
+  "name": "hbv602-lokaverkefni",
+  "version": "0.1.0",
+  "description": "Lokaverkefni í öryggi tölvukerfa",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -17,7 +17,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
-    "pg": "^7.8.0",
+    "pg": "^7.18.2",
     "xss": "^1.0.3"
   },
   "devDependencies": {

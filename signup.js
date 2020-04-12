@@ -1,7 +1,5 @@
-const xss = require('xss');
 const express = require('express');
 const { check, validationResult } = require('express-validator/check');
-const { sanitize } = require('express-validator/filter');
 
 const { insert } = require('./db');
 
@@ -15,92 +13,45 @@ function catchErrors(fn) {
   return (req, res, next) => fn(req, res, next).catch(next);
 }
 
-/**
- * Hjálparfall sem XSS hreinsar reit í formi eftir heiti.
- *
- * @param {string} fieldName Heiti á reit
- * @returns {function} Middleware sem hreinsar reit ef hann finnst
- */
-function sanitizeXss(fieldName) {
-  return (req, res, next) => {
-    if (!req.body) {
-      next();
-    }
-
-    const field = req.body[fieldName];
-
-    if (field) {
-      req.body[fieldName] = xss(field);
-    }
-
-    next();
-  };
-}
-
 const router = express.Router();
 
 // Fylki af öllum validations fyrir umsókn
 const validations = [
   check('name')
-    .isLength({ min: 1 })
-    .withMessage('Nafn má ekki vera tómt'),
+    .isLength({ min: 2 })
+    .withMessage('Name has to be at least 2 letters long'),
 
   check('email')
     .isLength({ min: 1 })
-    .withMessage('Netfang má ekki vera tómt'),
+    .withMessage('email can\'t be empty'),
 
   check('email')
     .isEmail()
-    .withMessage('Netfang verður að vera netfang'),
+    .withMessage('Not valid email'),
 
   check('phone')
     .matches(/^[0-9]{3}( |-)?[0-9]{4}$/)
-    .withMessage('Símanúmer verður að vera sjö tölustafir'),
+    .withMessage('Phone number has to be 7 digits long'),
 
   check('text')
-    .isLength({ min: 100 })
-    .withMessage('Kynning verður að vera að minnsta kosti 100 stafir'),
-
-  check('job')
-    .custom(value => ['forritari', 'hönnuður', 'verkefnastjóri'].indexOf(value) >= 0)
-    .withMessage('Velja verður starf'),
-];
-
-// Fylki af öllum hreinsunum fyrir umsókn
-const sanitazions = [
-  sanitize('name').trim().escape(),
-  sanitizeXss('name'),
-
-  sanitizeXss('email'),
-  sanitize('email').trim().normalizeEmail(),
-
-  sanitizeXss('phone'),
-  sanitize('phone')
-    .trim().blacklist(' ').escape()
-    .toInt(),
-
-  sanitizeXss('text'),
-  sanitize('text').trim().escape(),
-
-  sanitizeXss('job'),
-  sanitize('job').trim().escape(),
+    .isLength({ min: 20 })
+    .withMessage('About has to be at least 20 letters long'),
 ];
 
 /**
- * Route handler fyrir form umsóknar.
+ * Route handler for the signup form.
  *
- * @param {object} req Request hlutur
- * @param {object} res Response hlutur
- * @returns {string} Formi fyrir umsókn
+ * @param {object} req Request object
+ * @param {object} res Response object
+ * @returns {string}
  */
 function form(req, res) {
   const data = {
-    title: 'Atvinnuumsókn',
+    title: 'User',
     name: '',
     email: '',
     phone: '',
     text: '',
-    job: '',
     errors: [],
   };
   res.render('form', data);
@@ -122,7 +73,6 @@ function showErrors(req, res, next) {
       email = '',
       phone = '',
       text = '',
-      job = '',
     } = {},
   } = req;
 
@@ -131,7 +81,6 @@ function showErrors(req, res, next) {
     email,
     phone,
     text,
-    job,
   };
 
   const validation = validationResult(req);
@@ -139,7 +88,7 @@ function showErrors(req, res, next) {
   if (!validation.isEmpty()) {
     const errors = validation.array();
     data.errors = errors;
-    data.title = 'Avinnuumsókn – vandræði';
+    data.title = 'User not valid';
 
     return res.render('form', data);
   }
@@ -161,7 +110,6 @@ async function formPost(req, res) {
       email = '',
       phone = '',
       text = '',
-      job = '',
     } = {},
   } = req;
 
@@ -170,7 +118,6 @@ async function formPost(req, res) {
     email,
     phone,
     text,
-    job,
   };
 
   await insert(data);
@@ -197,8 +144,6 @@ router.post(
   validations,
   // Ef form er ekki í lagi, birtir upplýsingar um það
   showErrors,
-  // Öll gögn í lagi, hreinsa þau
-  sanitazions,
   // Senda gögn í gagnagrunn
   catchErrors(formPost),
 );

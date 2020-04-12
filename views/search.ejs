@@ -1,0 +1,11 @@
+<%- include('header') -%>
+
+<form method="get" action="/users">
+    <div class="field<%= locals.isInvalid('search', errors) ?  ' field--invalid' : '' %>">
+    <label for="name">Search</label>
+    <input type="text" name="param" id="param" value="<%= param %>" class="">
+    </div>
+  <button>Search</button>
+</form>
+
+<%- include('footer') -%>

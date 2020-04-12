@@ -1,38 +1,27 @@
 <%- include('header') -%>
 
-<h1>Atvinnuumsókn</h1>
+<h1>Signup for free iPhone!</h1>
 
 <form method="post" action="/">
   <div class="field<%= locals.isInvalid('name', errors) ?  ' field--invalid' : '' %>">
-    <label for="name">Nafn</label>
+    <label for="name">Name</label>
     <input type="text" name="name" id="name" value="<%= name %>" class="">
   </div>
   <div class="field<%= locals.isInvalid('email', errors) ?  ' field--invalid' : '' %>">
-    <label for="email">Netfang</label>
+    <label for="email">email</label>
     <input type="text" name="email" id="email" value="<%= email %>" class="">
   </div>
   <div class="field<%= locals.isInvalid('phone', errors) ?  ' field--invalid' : '' %>">
-    <label for="phone">Sími</label>
+    <label for="phone">Phone number</label>
     <input type="text" name="phone" id="phone" value="<%= phone %>" class="">
   </div>
   <div class="field<%= locals.isInvalid('text', errors) ?  ' field--invalid' : '' %>">
-    <label for="text">Kynning á þér:</label>
+    <label for="text">About you</label>
     <textarea name="text" id="text"><%= text %></textarea>
   </div>
 
-  <h2>Starf sem sótt er um:</h2>
-  <div class="field field--radio<%= locals.isInvalid('job', errors) ?  ' field--invalid' : '' %>">
-    <label><input type="radio" name="job" value="forritari" <%= job === 'forritari' ? 'checked' : '' %>> Forritari</label>
-  </div>
-  <div class="field field--radio<%= locals.isInvalid('job', errors) ?  ' field--invalid' : '' %>">
-    <label><input type="radio" name="job" value="hönnuður" <%= job === 'hönnuður' ? 'checked' : '' %>> Hönnuður</label>
-  </div>
-  <div class="field field--radio<%= locals.isInvalid('job', errors) ?  ' field--invalid' : '' %>">
-    <label><input type="radio" name="job" value="verkefnastjóri" <%= job === 'verkefnastjóri' ? 'checked' : '' %>> Verkefnastjóri</label>
-  </div>
-
   <% if (errors.length > 0) { %>
-    <h2>Vandræði við að senda umsókn:</h2>
+    <h2>Trouble Signing up</h2>
     <ul class="errors">
       <% errors.forEach((error) => { %>
         <li class="error"><label for="<%= error.param %>"><%= error.msg %></label></li>
@@ -40,7 +29,7 @@
     </ul>
   <% } %>
 
-  <button>Senda umsókn</button>
+  <button>Signup</button>
 </form>
 
 <%- include('footer') -%>
