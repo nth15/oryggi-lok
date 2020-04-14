@@ -58,7 +58,7 @@ async function select() {
 async function search(username) {
   const client = new Client({ connectionString });
 
-  const result = await client.query(`SELECT * FROM users WHERE name LIKE VALUES('${username}')`);
+  const result = await client.query(`SELECT * FROM users WHERE name = ${username}`);
 
   return result.rows;
 }
