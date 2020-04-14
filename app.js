@@ -44,8 +44,8 @@ function errorHandler(error, req, res, next) { // eslint-disable-line
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-const hostname = 'https://oryggi.herokuapp.com/' || '127.0.0.1';
-const port = process.env.PORT || 3000;
+const hostname = '127.0.0.1';
+const port = 3000;
 
 app.listen(port, hostname, () => {
   console.info(`Server running at http://${hostname}:${port}/`);
