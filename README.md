@@ -14,4 +14,5 @@ npm run dev
 ```
 Sources
 =====
-https://github.com/vefforritun/vef2-2019-v2-synilausn
+- https://github.com/vefforritun/vef2-2019-v2-synilausn
+- https://github.com/klamping/rain-puppet

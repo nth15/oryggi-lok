@@ -4,7 +4,8 @@
   "description": "Lokaverkefni í öryggi tölvukerfa",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
+    "start": "nodemon app.js",
+    "dev": "node app.js",
     "setup": "node setup.js",
     "eslint": "eslint *.js",
     "test": "npm run eslint"
@@ -24,6 +25,7 @@
     "eslint": "5.12.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.15.0",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "puppeteer": "^2.1.1"
   }
 }
