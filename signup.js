@@ -74,7 +74,7 @@ function showErrors(req, res, next) {
       phone = '',
       text = '',
     } = {},
-  } = req;
+  } = req.autosan.body;
 
   const data = {
     name,
@@ -111,7 +111,7 @@ async function formPost(req, res) {
       phone = '',
       text = '',
     } = {},
-  } = req;
+  } = req.autosan.body;
 
   const data = {
     name,

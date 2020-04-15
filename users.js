@@ -1,7 +1,6 @@
 const express = require('express');
 
 const { select, search } = require('./db');
-const { check, validationResult } = require('express-validator/check');
 
 const router = express.Router();
 
@@ -47,7 +46,7 @@ async function searchUsers(req, res) {
     body: {
       param = '',
     } = {},
-  } = req;
+  } = req.autosan.body;
 
   const list = await search(param);
 

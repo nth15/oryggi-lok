@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const path = require('path');
 const express = require('express');
+const expAutoSan = require('express-autosanitizer');
 
 const signup = require('./signup');
 const users = require('./users');
@@ -15,6 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(expAutoSan.all);
 
 /**
  * Hjálparfall til að athuga hvort reitur sé gildur eða ekki.
