@@ -2,6 +2,8 @@ Lokaverkefni
 ======
 Lokaverkefni í öryggi tölukerfa.
 
+Patched code, vonandi engar alvarlegar veilur.
+
 Búa þarf til postgresql gagnagrunn og setja tengistreng í skrá sem heitir `.env` (búa þarf þess skrá til). Sjá dæmi í `.env_example`. Sjá nánar í [`Að tengjast postgres`](https://github.com/vefforritun/vef2-2019/blob/master/itarefni/postgres.md).
 
 Keyrt með:
