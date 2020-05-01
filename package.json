@@ -8,7 +8,9 @@
     "dev": "nodemon app.js",
     "setup": "node setup.js",
     "eslint": "eslint *.js",
-    "test": "npm run eslint"
+    "test": "npm run eslint",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +22,8 @@
     "express": "^4.16.4",
     "express-validator": "^5.3.1",
     "pg": "^7.18.2",
-    "xss": "^1.0.6"
+    "xss": "^1.0.6",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "eslint": "5.12.1",
@@ -28,5 +31,6 @@
     "eslint-plugin-import": "2.15.0",
     "nodemon": "^2.0.3",
     "puppeteer": "^2.1.1"
-  }
+  },
+  "snyk": true
 }
