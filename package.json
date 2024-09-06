@@ -14,11 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nodemon": "^2.0.3",
+    "nodemon": "^3.0.0",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "express-validator": "^5.3.1",
+    "express-validator": "^6.10.1",
     "pg": "^7.18.2",
     "xss": "^1.0.6"
   },
@@ -26,7 +26,7 @@
     "eslint": "5.12.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.15.0",
-    "nodemon": "^2.0.3",
+    "nodemon": "^3.0.0",
     "puppeteer": "^2.1.1"
   }
 }
